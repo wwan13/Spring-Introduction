@@ -1,6 +1,5 @@
 package springintroduction.springintroduction.controller;
 
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,6 +50,7 @@ public class HelloController {
         return hello;
     }
 
+    // Hello Class
     static class Hello {
         private String name;
 
