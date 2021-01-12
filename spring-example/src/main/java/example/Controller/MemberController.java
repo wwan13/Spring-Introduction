@@ -3,6 +3,7 @@ package example.Controller;
 import example.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /*
 * @Controller, @Service, @Repository -> 컴포넌트 스캔 방식으로 자동으로 의존성 주입 ( 스프링 빈에 주입 )
@@ -17,5 +18,10 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    @GetMapping("/members/new")
+    public String createForm() {
+        return "members/createMemberForm";
     }
 }
