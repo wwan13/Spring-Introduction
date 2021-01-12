@@ -3,15 +3,27 @@ package example.service;
 import example.domain.Member;
 import example.repository.MemberRepository;
 import example.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 // command + shift + t => test class 자동 생성
+
+/*
+* Service : 서비스 관련 메소드 들을 작성하는 클래스
+* */
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    /*
+    * @Autowired 를 붙히면 스프링 컨테이너에 등록되어있는 레포지토리를
+    * 자동으 불러옴 -> new 를 하지 않아 새로운 인스턴스를 생성하지 않음
+    * */
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
