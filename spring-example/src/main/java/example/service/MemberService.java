@@ -14,7 +14,9 @@ import java.util.Optional;
 /*
 * Service : 서비스 관련 메소드 들을 작성하는 클래스
 * */
-@Service
+//@Service
+
+
 public class MemberService {
 
     private final MemberRepository memberRepository;
