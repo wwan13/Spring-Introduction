@@ -1,5 +1,6 @@
 package example;
 
+import example.aop.TimeTraceAop;
 import example.domain.Member;
 import example.repository.*;
 import example.service.MemberService;
@@ -42,7 +43,6 @@ public class SpringConfig<å> {
     public MemberService memberService() {
         return new MemberService(memberRepository);
     }
-
 
 //    @Bean
 //    public MemberRepository memberRepository() {
