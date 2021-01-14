@@ -22,7 +22,7 @@ public class JdbcMemberRepository implements MemberRepository {
 
     @Override
     public Member save(Member member) {
-        String sql = "insert into member(name) value(?)";
+        String sql = "insert into member(name) values(?)";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
