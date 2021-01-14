@@ -5,6 +5,7 @@ import example.repository.MemberRepository;
 import example.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +17,8 @@ import java.util.Optional;
 * */
 //@Service
 
-
+// jpa 사용시 transactional 필요
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;

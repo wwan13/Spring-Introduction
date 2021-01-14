@@ -23,6 +23,7 @@ class MemberServiceIntegrationTest {
     /* 테스트 코드이기 때문에 constructor 을 쓰지 않고 필드에 바로 주입 해도 상관 없음 */
     @Autowired
     MemberService memberService;
+
     @Autowired
     MemberRepository memberRepository;
 
