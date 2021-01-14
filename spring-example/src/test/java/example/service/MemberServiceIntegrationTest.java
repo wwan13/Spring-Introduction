@@ -7,30 +7,24 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * 스프링 없이 순수 자바 코드로만 테스트 하는 방법
- * 스프링을 거치는 것 보다 훨씬 빠르기 때문에 이 테스트 방법을 사용하는
- * 능력을 길러야함
+ * Spring 통합 테스트 코드
  */
-class MemberServiceTest {
+@SpringBootTest
+@Transactional  // 테스트한 db 데이터를 테스트가 끝나면 롤백
+class MemberServiceIntegrationTest {
 
+    /* 테스트 코드이기 때문에 constructor 을 쓰지 않고 필드에 바로 주입 해도 상관 없음 */
+    @Autowired
     MemberService memberService;
-    MemoryMemberRepository memberRepository;
-
-    @BeforeEach
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
-
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     void join() {
@@ -60,17 +54,6 @@ class MemberServiceTest {
         IllegalStateException exception = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 
         Assertions.assertThat(exception.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-
-        /*
-        try {
-            memberService.join(member2);
-            fail();
-        } catch (IllegalStateException e) {
-            Assertions.assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-        }
-
-         */
-
         // then
     }
 
