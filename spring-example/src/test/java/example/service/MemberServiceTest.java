@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 스프링 없이 순수 자바 코드로만 테스트 하는 방법
- * 스프링을 거치는 것 보다 훨씬 빠르기 때문에 이 테스트 방법을 사용하는
- * 능력을 길러야함
+ * 스프링을 거치는 것 보다 훨씬 빠르기 때문에
+ * 이 테스트 방법을 사용하는 방법이 더 바람직
  */
 class MemberServiceTest {
 
